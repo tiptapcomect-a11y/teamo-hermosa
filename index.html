@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>❤️🧩 Te Amo ❤️🧩</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+    body {
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadein 2s ease forwards;
+    }
+    .teamo {
+      position: absolute;
+      font-size: 22px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 14px #ff4d6d, 0 0 30px #ff4d6d;
+      animation: fall linear infinite, brilloSuave 3s ease-in-out infinite;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .corazon {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.3;
+      color: red;
+      animation: corazonfall linear infinite;
+      pointer-events: none;
+    }
+    .destello {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.4;
+      box-shadow: 0 0 8px white;
+      animation: destello 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+    @keyframes brilloSuave {
+      0%, 100% {
+        text-shadow: 0 0 14px #ff4d6d, 0 0 30px #ff4d6d;
+        color: #ffffff;
+      }
+      50% {
+        text-shadow: 0 0 24px #ff4d6d, 0 0 40px #ff4d6d;
+        color: #ffccd5;
+      }
+    }
+    @keyframes corazonfall {
+      0% {
+        transform: translateY(-50px) scale(1);
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+    @keyframes destello {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.4;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0.4;
+      }
+    }
+    @keyframes fadein {
+      to {
+        opacity: 1;
+      }
+    }
+    @media (max-width: 600px) {
+      .teamo {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="Por_eso_te_amo_recorte_desde_25s.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    const mensajes = [
+      'Te amo ❤️🧩',
+      'Eres mi todo 💖',
+      'Contigo, siempre 💘',
+      'Mi razón de sonreír 😍',
+      'Tú y yo, por siempre 💑',
+      'Eres mi sueño hecho realidad 🌙',
+      'Gracias por existir 🌟',
+      'Eres lo mejor que me ha pasado 🌈',
+      'Te necesito cerquita 💞',
+      'Cada latido es por ti 🪀',
+      'Mi vida cambió contigo 💓',
+      'Nada me hace más feliz que tú ☀️',
+      'Te elijo cada día 💍',
+      'Eres mi hogar 🏡',
+      'Mi amor por ti es infinito ♾️',
+      'No dejo de pensar en ti 🌸',
+      'Quiero abrazarte siempre 🪥',
+      'Tus ojos me enamoran 🥰',
+      'Mi mundo eres tú 🌍',
+      'Eres mi sol en los días nublados ☀️',
+      'Te pienso a cada instante ⏳',
+      'Tu voz me calma 🎧',
+      'Eres magia pura 🎩',
+      'Mi corazoncito late por ti 🩸'
+    ];
+
+    function mensajeAleatorio() {
+      return mensajes[Math.floor(Math.random() * mensajes.length)];
+    }
+
+    function createTeAmo(x = null, y = -50, personalizado = false) {
+      const div = document.createElement('div');
+      div.classList.add('teamo');
+      div.textContent = personalizado ? 'Te amo ❤️🧩' : mensajeAleatorio();
+      document.body.appendChild(div);
+
+      const width = div.offsetWidth;
+      if (x === null) {
+        x = Math.random() * (window.innerWidth - width);
+      } else {
+        x = Math.min(Math.max(x, 0), window.innerWidth - width);
+      }
+
+      div.style.left = `${x}px`;
+      div.style.top = `${y}px`;
+      div.style.animationDuration = `${3 + Math.random() * 2}s`;
+
+      setTimeout(() => div.remove(), 5000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('corazon');
+      heart.textContent = '❤';
+      heart.style.left = `${Math.random() * window.innerWidth}px`;
+      heart.style.top = `-30px`;
+      heart.style.fontSize = `${10 + Math.random() * 20}px`;
+      heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    function createDestello() {
+      const spark = document.createElement('div');
+      spark.classList.add('destello');
+      spark.style.left = `${Math.random() * window.innerWidth}px`;
+      spark.style.top = `${Math.random() * window.innerHeight}px`;
+      spark.style.animationDuration = `${3 + Math.random() * 4}s`;
+      document.body.appendChild(spark);
+
+      setTimeout(() => spark.remove(), 7000);
+    }
+
+    const isMobile = window.innerWidth < 600;
+
+    setInterval(() => {
+      createTeAmo();
+    }, isMobile ? 1200 : 800);
+
+    setInterval(() => {
+      createHeart();
+    }, isMobile ? 500 : 300);
+
+    setInterval(() => {
+      createDestello();
+    }, 400);
+
+    document.body.addEventListener('click', (e) => {
+      createTeAmo(e.clientX, e.clientY, true);
+    });
+  </script>
+</body>
+</html>
