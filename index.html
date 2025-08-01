@@ -145,21 +145,29 @@
     setInterval(() => createDestello(), 500);
 
     let startedMusic = false;
-    document.body.addEventListener('click', (e) => {
+
+    function startAudio(e) {
       createTeAmo(e.clientX, e.clientY, true);
 
       if (!startedMusic) {
-        const music = document.getElementById('bgMusic');
-        music.play().catch(() => {});
         startedMusic = true;
+
+        const music = document.getElementById('bgMusic');
+        music.play().catch((err) => {
+          console.log("Error reproduciendo música:", err);
+        });
       }
 
       const pop = document.getElementById('popSound');
       if (pop) {
         pop.currentTime = 0;
-        pop.play();
+        pop.play().catch(() => {});
       }
-    });
+
+      document.body.removeEventListener('click', startAudio);
+    }
+
+    document.body.addEventListener('click', startAudio);
   </script>
 </body>
 </html>
