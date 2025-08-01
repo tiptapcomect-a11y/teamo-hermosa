@@ -146,28 +146,26 @@
 
     let startedMusic = false;
 
-    function startAudio(e) {
-      createTeAmo(e.clientX, e.clientY, true);
+    function handleClick(e) {
+  createTeAmo(e.clientX, e.clientY, true);
 
-      if (!startedMusic) {
-        startedMusic = true;
+  if (!startedMusic) {
+    startedMusic = true;
 
-        const music = document.getElementById('bgMusic');
-        music.play().catch((err) => {
-          console.log("Error reproduciendo música:", err);
-        });
-      }
+    const music = document.getElementById('bgMusic');
+    music.play().catch((err) => {
+      console.log("Error reproduciendo música:", err);
+    });
+  }
 
-      const pop = document.getElementById('popSound');
-      if (pop) {
-        pop.currentTime = 0;
-        pop.play().catch(() => {});
-      }
+  const pop = document.getElementById('popSound');
+  if (pop) {
+    pop.currentTime = 0;
+    pop.play().catch(() => {});
+  }
+}
 
-      document.body.removeEventListener('click', startAudio);
-    }
-
-    document.body.addEventListener('click', startAudio);
+document.body.addEventListener('click', handleClick);
   </script>
 </body>
 </html>
