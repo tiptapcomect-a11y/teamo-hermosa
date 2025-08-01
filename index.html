@@ -10,38 +10,9 @@
       width: 100%; height: 100%;
       overflow: hidden;
       background-color: #000;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: system-ui, Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
-      position: relative;
-    }
-
-    /* Fecha de aniversario al fondo */
-    #fechaFondo {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 8vw;
-      color: rgba(255, 105, 180, 0.15); /* rosa claro translúcido */
-      font-style: italic;
-      font-weight: 600;
-      user-select: none;
-      pointer-events: none;
-      text-align: center;
-      letter-spacing: 0.1em;
-      text-shadow:
-        0 0 10px rgba(255, 105, 180, 0.2),
-        0 0 20px rgba(255, 105, 180, 0.15);
-      white-space: nowrap;
-      z-index: 0;
-
-      animation: latido 4s ease-in-out infinite;
-    }
-
-    @keyframes latido {
-      0%, 100% { opacity: 0.15; }
-      50% { opacity: 0.3; }
     }
 
     .teamo {
@@ -54,7 +25,6 @@
       white-space: nowrap;
       pointer-events: none;
       will-change: transform;
-      z-index: 1;
     }
 
     .destello {
@@ -68,7 +38,6 @@
       animation: destello 8s ease-in-out forwards;
       pointer-events: none;
       will-change: transform;
-      z-index: 1;
     }
 
     @keyframes fall {
@@ -83,8 +52,6 @@
   </style>
 </head>
 <body>
-  <div id="fechaFondo">21/10/2024</div>
-
   <audio id="bgMusic" preload="auto" loop>
     <source src="audios/music.mp3" type="audio/mpeg" />
   </audio>
@@ -113,6 +80,7 @@
       'Tu voz me calma 🎧', 'Eres magia pura 🎩', 'Mi corazoncito late por ti 🪨'
     ];
 
+    // Unión de ambas listas
     const todasFrases = frases1.concat(frases2);
 
     const emojis = ['😍', '🥰', '😻', '👩‍❤️‍👨', '👩‍🤝‍👨', '💓', '❤️‍🔥', '💖', '😚', '💋', '💋'];
@@ -147,11 +115,13 @@
       setTimeout(() => spark.remove(), 8000);
     }
 
+    // Frases cayendo continuamente (aleatorias de todas las frases)
     setInterval(() => createTeAmo(), 800);
     setInterval(() => createDestello(), 1600);
 
     let startedMusic = false;
 
+    // Al hacer clic, aparece solo "Te amo ❤️🩹" cayendo desde la posición clickeada
     function startAudio(e) {
       createTeAmo(e.clientX, e.clientY, 'Te amo ❤️🩹');
       if (!startedMusic) {
