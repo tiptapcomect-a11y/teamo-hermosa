@@ -149,6 +149,12 @@
     function handleClick(e) {
   createTeAmo(e.clientX, e.clientY, true);
 
+  const pop = document.getElementById('popSound');
+  if (pop) {
+    pop.currentTime = 0;
+    pop.play().catch(() => {});
+  }
+
   if (!startedMusic) {
     startedMusic = true;
 
@@ -156,12 +162,6 @@
     music.play().catch((err) => {
       console.log("Error reproduciendo música:", err);
     });
-  }
-
-  const pop = document.getElementById('popSound');
-  if (pop) {
-    pop.currentTime = 0;
-    pop.play().catch(() => {});
   }
 }
 
