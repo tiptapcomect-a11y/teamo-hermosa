@@ -12,9 +12,10 @@
       overflow: hidden;
       background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
       font-family: Arial, sans-serif;
-      cursor: pointer;
       opacity: 0;
       animation: fadein 2s ease forwards;
+      -webkit-tap-highlight-color: transparent; /* Quita el parpadeo azul en móviles */
+      touch-action: manipulation;
     }
 
     .teamo {
@@ -134,14 +135,12 @@
       setTimeout(() => spark.remove(), 7000);
     }
 
-    // Intervalos más suaves para móviles
     const isMobile = window.innerWidth < 600;
 
     setInterval(() => createTeAmo(), isMobile ? 1500 : 800);
     setInterval(() => createHeart(), isMobile ? 800 : 400);
     setInterval(() => createDestello(), 500);
 
-    // Mensaje personalizado al tocar
     document.body.addEventListener('click', (e) => {
       createTeAmo(e.clientX, e.clientY, true);
     });
