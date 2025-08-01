@@ -11,7 +11,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      background-color: black;
       font-family: Arial, sans-serif;
       opacity: 0;
       animation: fadein 2s ease forwards;
@@ -33,8 +33,7 @@
     .corazon {
       position: absolute;
       font-size: 5vw;
-      color: red;
-      opacity: 0.3;
+      opacity: 0.5;
       animation: corazonfall linear infinite;
       pointer-events: none;
     }
@@ -62,7 +61,7 @@
     }
 
     @keyframes corazonfall {
-      0% { transform: translateY(-50px) scale(1); opacity: 0.3; }
+      0% { transform: translateY(-50px) scale(1); opacity: 0.5; }
       100% { transform: translateY(100vh) scale(1.5); opacity: 0; }
     }
 
@@ -115,7 +114,7 @@
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('corazon');
-      heart.textContent = '❤';
+      heart.textContent = '❤️🩹';
       heart.style.left = `${Math.random() * window.innerWidth}px`;
       heart.style.top = `-30px`;
       heart.style.fontSize = `${10 + Math.random() * 20}px`;
